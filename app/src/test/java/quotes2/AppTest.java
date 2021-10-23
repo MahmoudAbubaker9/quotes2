@@ -3,12 +3,25 @@
  */
 package quotes2;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.*;
+import static org.junit.Assert.*;
+
+public class AppTest {
+
+    @Test
+    public void randomQuoteTest() throws FileNotFoundException {
+        Gson gson = new Gson();
+        FileReader jsonFile = new FileReader("Countact.json");
+        BookQuiry [] book = gson.fromJson(jsonFile, BookQuiry[].class);
+        assertTrue(book !=null);
     }
 }
